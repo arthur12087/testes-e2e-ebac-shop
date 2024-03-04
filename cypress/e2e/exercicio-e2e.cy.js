@@ -23,7 +23,11 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
     it('Deve fazer um pedido na loja Ebac Shop de ponta a ponta', () => {
         //1 selecionar produtos ao carrinho, 2- preencher opções no checkout, 3 -validar compra
 
-        productPage.searchProduct(dadosProdutos[0].nomeproduto1,dadosProdutos[0].tamanho,dadosProdutos[0])
+        for(let i =0; i<dadosProdutos.length; i++){
+
+        productPage.searchProduct(dadosProdutos[i].nomeproduto1)
+        productPage.addProductToCart(dadosProdutos[i].nomeproduto1, dadosProdutos[i].tamanho, dadosProdutos[i].cor, dadosProdutos[i].quantidade)
+        }
     });
 
 
