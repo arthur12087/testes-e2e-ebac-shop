@@ -2,6 +2,7 @@
 
 import productPage from "../support/page_objects/product.page";
 import dadosProdutos from "../fixtures/produtos.json"
+import checkoutPage from "../support/page_objects/checkout.page";
 
 context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
     /*  Como cliente 
@@ -25,9 +26,14 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
 
         for(let i =0; i<dadosProdutos.length; i++){
 
-        productPage.searchProduct(dadosProdutos[i].nomeproduto1)
-        productPage.addProductToCart(dadosProdutos[i].nomeproduto1, dadosProdutos[i].tamanho, dadosProdutos[i].cor, dadosProdutos[i].quantidade)
+        productPage.searchProduct(dadosProdutos[i].nomeproduto)
+        productPage.addProductToCart(dadosProdutos[i].nomeproduto, dadosProdutos[i].tamanho, dadosProdutos[i].cor, dadosProdutos[i].quantidade)
         }
+
+    });
+
+    it.only('Preencher checkout após colocar produtos no carrinho', () => {
+        checkoutPage.preencherCheckout()
     });
 
 
