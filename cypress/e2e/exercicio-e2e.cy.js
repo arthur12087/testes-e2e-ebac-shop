@@ -28,7 +28,10 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
         productPage.searchProduct(dadosProdutos[i].nomeproduto)
         productPage.addProductToCart(dadosProdutos[i].nomeproduto, dadosProdutos[i].tamanho, dadosProdutos[i].cor, dadosProdutos[i].quantidade)
         }
-        checkoutPage.preencherCheckout()
+
+        checkoutPage.preencherCheckout('Brasil','Rua das Rosas, 123','Sao Paulo','São Paulo','05999-999')
+        cy.wait(1000)
+        cy.get('.page-title').should('have.text','Pedido recebido')
 
     });
 
